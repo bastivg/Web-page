@@ -1,0 +1,33 @@
+version: "3.3"
+services: # Uses the dockerfile in backEnd
+  backend_isw:
+    build: ./backEnd
+    tty: true
+    container_name: backend_isw
+    volumes:
+    - ./backEnd:/app
+    ports:
+    - "4000:4000"
+    depends_on:
+    - postgres
+  frontend_isw:
+    build: ./frontEnd/web
+    tty: true
+    container_name: frontend_isw
+    volumes:
+    - ./frontEnd/web:/app/project
+    ports:
+    - "3000:3000"
+    depends_on:
+    - backend_isw
+  postgres:
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+    - './postgres_data:/var/lib/postgresql/data'
+    environment:
+    - POSTGRES_PASSWORD=pass
+    - POSTGRES_USER=user
+    - POSTGRES_DB=isw
+    ports:
+    - '5432:5432'
