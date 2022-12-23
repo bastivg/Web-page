@@ -1,0 +1,20 @@
+# pull official base image
+FROM node:18.10.0-alpine
+
+RUN npm install -g create-react-app
+RUN npm install -g react-scripts
+
+# set working directory
+WORKDIR /app/project
+
+RUN chown -Rh node:node /app/project
+
+USER node
+
+
+# install app dependencies
+
+# add app
+
+# start app
+CMD [ "sh", "-c", "npm install && npm run start" ]
