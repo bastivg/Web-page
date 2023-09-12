@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+
+    central:
+        build: ./central
+        container_name: central
+        command: go run ./central/main.go
+        volumes:
+          - .:/central
+          - .:/code

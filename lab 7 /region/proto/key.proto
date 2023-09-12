@@ -1,0 +1,16 @@
+syntax = "proto3";
+option go_package = "Lab1/proto";
+package main;
+
+service KeyService {
+  rpc SendKey (KeyRequest) returns (KeyResponse) {}
+}
+
+message KeyRequest {
+  int32 key = 1;
+  int32 tipo = 2;
+}
+
+message KeyResponse {
+  string message = 1;
+}

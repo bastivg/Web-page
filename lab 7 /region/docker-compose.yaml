@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+    regiones:
+        build: ./regiones
+        container_name: regiones
+        command: go run ./regiones/main.go
+        volumes:
+          - .:/regiones
+          - .:/code
+        ports:
+          - "50051:50051"
